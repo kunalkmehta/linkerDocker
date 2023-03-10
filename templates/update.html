@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class='container my-3'>
+    <h3>Enter your link information</h3>
+    <form action = '/update/{{link.link_id}}' method = 'post'>
+        <div class="mb-3">
+            <label for="title" class="form-label">Link Title</label>
+            <input type="text" class="form-control" name='title' value = {{link.title}} id="email" aria-describedby="emailHelp">
+
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" value = {{link.category}} name='category' id="category">
+        </div>
+
+        <div class="mb-3">
+            <label for="link" class="form-label">Link</label>
+            <input type="text" class="form-control" value = {{link.link}} name='link' id="link">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock body %}

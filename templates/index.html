@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block body %}
+<div class='container my-3'>
+    <h3>Enter your link information</h3>
+    <form action = '/' method = 'post'>
+        <div class="mb-3">
+            <label for="title" class="form-label">Link Title</label>
+            <input type="text" class="form-control" name='title' id="email" aria-describedby="emailHelp">
+
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" name='category' id="category">
+        </div>
+
+        <div class="mb-3">
+            <label for="link" class="form-label">Link</label>
+            <input type="text" class="form-control" name='link' id="link">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class='container my-3'>
+    <h3>Your link information</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Link</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in all_links %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{link.title}}</td>
+                <td>{{link.category}}</td>
+                <td>{{link.link}}</td>
+                <td>{{link.date}}</td>
+                <td>
+                    <a href = '/update/{{link.link_id}}' <button type="button" class="btn btn-outline-dark">Update</button></a>
+                    <a href = '/delete/{{link.link_id}}' <button type="button" class="btn btn-outline-dark">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}
